@@ -22,7 +22,7 @@ def input_value(message):
     if state == "waiting for AB":
         try:
             AB = message.text
-            A, B = map(int, AB.split(":"))
+            A, B = map(float, AB.split(":"))
             state = "waiting for C"
             bot.send_message(message.chat.id, "Now input C")
         except:
@@ -30,7 +30,7 @@ def input_value(message):
     elif state == "waiting for C":
         try:
             C = float(message.text)
-            B = int(B)
+            B = float(B)
             D = (C * B) / A
             D = round(D, 2) # round off D to 2 decimal places
             bot.send_message(message.chat.id, f"D = {D}")
